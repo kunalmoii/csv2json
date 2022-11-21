@@ -10,11 +10,13 @@ json_data = {'categories': [], 'images': [], 'annotations': []}
 
 # classes
 classes = __APP_SETTINGS__.CLASS_NAMES
-print(f"Classes: {classes}")
 
 for index, category in enumerate(classes):
     out = {"id": index, "name": category}
     json_data['categories'].append(out)
+print()
+print(json_data['categories'])
+print()
 
 
 temp_image_id = 0
@@ -61,4 +63,4 @@ for info in range(len(data['labels'])):
 with open(f"output_json/{__APP_SETTINGS__.OUTPUT_JSON}", "w") as outfile:
     json.dump(json_data, outfile, indent=1)
 
-print('--SUCCESSFULLY CONVerTED TO JSON--')
+print('--SUCCESSFULLY CONVERTED TO JSON--')
