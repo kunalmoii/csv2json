@@ -41,10 +41,15 @@ for info in range(len(data['labels'])):
                 if labels == categories:
                     category_id = id
 
-            json_data['images'].append({'file_name': file_name.split('/')[-1],
+            json_data['images'].append({'file_name': file_name,
                                         'height': image_height,
                                         'width': image_width,
                                         'id': image_id})
+
+            # json_data['images'].append({'file_name': file_name.split('/')[-1],
+            #                             'height': image_height,
+            #                             'width': image_width,
+            #                             'id': image_id})
 
             json_data['annotations'].append({'area': int(x_max)*int(y_max),
                                              'iscrowd': 0,
