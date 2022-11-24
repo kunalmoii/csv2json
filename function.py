@@ -24,6 +24,7 @@ image_id = 0
 for info in range(len(data['labels'])):
 
     image_info = ast.literal_eval(data['labels'][info])
+    print(image_info)
     # to check the no. of annotations present inside json
     image_info_labels = len(image_info)
     for anno in range(image_info_labels):
