@@ -40,8 +40,8 @@ for info in range(len(data['labels'])):
 
     # to save filename with bucket url eg: "gs://input-bucket-2e42ed/frame_1137.jpg"
     json_data['images'].append({'file_name': file_name,
-                                'height': image_height,
-                                'width': image_width,
+                                'height': int(float(image_height)),
+                                'width': int(float(image_width)),
                                 'id': image_id})
 
     # to save filename with actual frame name eg: "frame_1137.jpg"
@@ -63,10 +63,10 @@ for info in range(len(data['labels'])):
                 if labels == categories:
                     category_id = id
 
-            json_data['annotations'].append({'area': int(x_max)*int(y_max),
+            json_data['annotations'].append({'area': int((x_max/100)*image_width) * int((y_max/100)*image_height),
                                              'iscrowd': 0,
                                              'image_id': image_id,
-                                             'bbox': [int((x_min/100)*image_width), int((y_min/100)*image_height), int((x_max/100)*image_width), int((y_max/100)*image_height)],
+                                             'bbox': [abs(int((x_min/100)*image_width)), abs(int((y_min/100)*image_height)), int((x_max/100)*image_width), int((y_max/100)*image_height)],
                                              'category_id': category_id,
                                              'id': temp_image_id,
                                              'ignore': 0,
